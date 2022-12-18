@@ -493,8 +493,8 @@ int main(void)
 // 5) 멤버변수를 동적 할당하였다면 소멸자에서 delete 처리하자
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+// 12 / 4)
+// C++ 4)
 // SI(system integration)  SM(유지보수를 담당하는 부서)없으면 들어가지 마셈.
 // - 거의 야근이 잦음
 // - 취업난이도가 상대적으로 낮음.(인력난)
@@ -650,9 +650,9 @@ int main(void)
 //    (이니셜라이저로 직접 초기화 불가능)
 
 
-#include<iostream>
-#include<string>
-using namespace std;
+//#include<iostream>
+//#include<string>
+//using namespace std;
 
 /*
 class Car
@@ -720,118 +720,62 @@ public:
 
 
 };*/
-class Character
-{
-    string name;
-    int power;
-    int HP;
 
-public:
+//#include<iostream>
+//#include<string>
+//#include"Archer.h"
+//using namespace std;
 
-    Character(string name = "", int power = 0, int HP = 0) :name(name), power(power), HP(HP)
-    {
+//int main(void)
+//{
+    //OilCar* myCar = new HybridCar(new string("운전자"), new string("승객"), 10, 100);
 
-    }
-    void Attack(Character& target)
-    {
-        target.HP = target.HP - this->power;
-    }
+   // myCar->Go();
+   // myCar->ShowState();
 
-    void setName(string name) { this->name = name; }
-    string getName() { return name; }
+   // delete myCar;
+    // virtual 사용후
 
-    void setpower(int power) { this->power = power; }
-    int getpower() { return power; }
+    /*
+    Car* mycar = new HybirdCar();
 
-    void setHP(int HP) { this->HP = HP; }
-    int getHP() { return HP; }
+    mycar->Go();
+    mycar->ShowState();
 
-    void ShowState()
-    {
-        cout << "name:" << name << endl;
-        cout << "power:" << power << endl;
-        cout << "HP:" << HP << endl;
-    }
-};
+    mycar = new OilCar();
 
+    mycar->Go();
+    mycar->ShowState();
+    */
 
-class Archer : public Character
-{
+    /* virtual 사용하기전
+    HybirdCar* mycar = new HybirdCar;
 
-public:
-    Archer(string name, int Power, int HP) :Character(name, Power, HP)
-    {
+    mycar->ShowState();
 
-    }
+    mycar->OilCar::ShowState();
 
-};
+    mycar->Car::ShowState();
+    */
 
-class Healer : public Character
-{
+    // [함수 오버라이딩]
 
-public:
-    Healer(string name, int Power, int HP) :Character(name, Power, HP)
-    {
-
-    }
-
-    void Heal(Character& target)
-    {
-        target.setHP(target.getHP() + 10);
-    }
-
-};
-
-class Warrior : public Character
-{
-
-public:
-    Warrior(string name, int Power, int HP) :Character(name, Power, HP)
-    {
-
-    }
-
-};
-
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-class First
-{
-public:
-    void FirstFnc() { cout << "First Class" << endl; }
-    void FirstFnc() {};
-
-};
-
-class Second : public First
-{
-public:
-    void SecondFnc() { cout << "Second Class" << endl; }
-    void SecondFnc() {};
-
-};
-
-class Third : public Second
-{
-public:
-    void ThirdFnc() { cout << "Third Class" << endl; }
-    void ThirdFnc() {};
-};
-
-int main(void)
-{
     //First* obj = new Third;
 
     //obj->FirstFnc();
 
-    Third* test = new Third();
+    //obj->SecondFnc(); /오류
+
+    //obj->ThirdFnc();  /오류
+
+    /*
+    Third *test = new Third();
 
     First* test2 = new Third();
 
     test->FirstFnc();
 
     test2->FirstFnc();
-
-
 
     Archer* p1 = new Archer("p1", 20, 100);
     Healer* p2 = new Healer("p2", 10, 100);
@@ -847,7 +791,7 @@ int main(void)
 
     p3->ShowState();
 
-
+    */
 
     /*
    // K3* mycar = new K3(100, 100);
@@ -871,3 +815,26 @@ int main(void)
 // 2. 생성자는 부모 -> 자식 순으로 실행된다.
 // 3. 자식이 소멸될때 부모의 소멸자도 자동으로 호출된다.
 // 4. 소멸자는 자식 -> 부모순으로 실행된다.
+
+// [가상함수]
+
+// [가상함수의 특징]
+
+// 1. 반환형 앞에 virtual 키워드를 쓴다.
+// 2. 부모가 가상함수면은 자식이 오버라이딩시 키워드를 사용안해도 가상함수가 된다.
+// 3. 사용시 가상함수라면 자식의 함수를 호출한다.
+// 4. 자식 클래스는 키워드를 사용하지 않아도 자동으로 virtual이 되지만 그래도 명확히 써주는게 좋다.
+
+// [순수 가상함수]
+
+// 1. 함수 내용을 비우고 = 0; 을 작성한다.
+// 2. 순수 가상함수가 있는 클래스는 객체화 될 수 없다.
+// 3. 순수 가상함수를 가지는 클래스를 추상클래스 라고 부른다.
+// 4. 의도치 않은 객체 생성을 막는다.
+// 5. 자식클래스의 틀을 만드는 목적 이라는걸 명확히 표시 한다.
+
+// [가상 소멸자]
+
+// 1. 부모가 가상이면 자식도 가상소멸자가 된다.
+// 2. 자식의 소멸자가 호출되면 부모의 소멸자는 자동으로 호출된다.
+// 3. 자식 -> 부모 순으로 실행된다.
