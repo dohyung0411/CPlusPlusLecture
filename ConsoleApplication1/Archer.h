@@ -6,42 +6,135 @@ using namespace std;
 
 // 협업때는 class명이 겹칠 확률이 높음.
 // 따라서 namespace를 자신만의 이름으로 정해놓고 class를 사용.
-namespace test
-{
-    class Archer
-    {
-    private:
+//namespace test
+//{
+   /*
+   class Archer
+   {
+      private:
 
-        string Name;
-        int HP;
-        int Power;
-        Archer* party;
-    public:
-        Archer(string name = "", int HP = 1, int b = 1);
+      string Name;
+      int HP;
+      int Power;
+      Archer* Party = NULL;
 
-        ~Archer();
+   public:
+      //Archer(string name = "", int HP = 1, int b = 1);
 
-        void ShowState();
+      Archer(Archer& copy);
 
-        void Heal();
+      ~Archer();
 
-        string GetName() { return Name; }
+      Archer Getparty();
 
-        string SetName();
+      string GetName();
 
-        void GetHP();
+      int GetHP();
 
-        void SetHP();
+      //int GetPower();
 
-        void GetPower();
+      //string SetName();
 
-        void SetPower();
+      //void SetHP();
 
-        Archer* Getparty() { return party; }
+      //void SetPower();
 
-        Archer* Setparty();
+      void SetParty(Archer Party);
+
+      void Attack(Archer& target);
+
+      void ShowState();
+
+      void Heal();
 
 
-    };
+   };
 }
+*/
 
+/*
+class Healer
+{
+private:
+
+   string Name;
+   int HP;
+   int Power;
+   Healer* Party = NULL;
+
+public:
+   void ShowState();
+
+   void ShowState();
+
+   string GetName() { return Name; }
+
+   void SetName(string Name);
+
+   int GetPower() { return Power; }
+
+   void SetPower(int Power);
+
+   int GetHP() { return HP; }
+
+   void SetHP(int HP);
+};
+
+class Warrior
+{
+private:
+
+   string Name;
+   int HP;
+   int Power;
+   Warrior* Party = NULL;
+
+public:
+   void ShowState();
+
+   string GetName() { return Name; }
+
+   void SetName();
+
+   int GetPower() {return Power;}
+
+   void SetPower();
+
+   int GetHP() { return HP; }
+
+   void SetHP();
+};
+*/
+/*
+#pragma once
+#include<iostream>
+using namespace std;
+
+class car
+{
+private:
+   int Speed;
+   int Gear;
+
+   static int Count;
+
+   static int cnt;
+
+
+public:
+
+   void Go();
+   void Stop();
+
+   static int GetCnt();
+
+   static int SetCnt();
+
+
+
+   car();
+
+   ~car();
+
+};
+*/
